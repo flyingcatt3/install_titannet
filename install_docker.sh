@@ -11,7 +11,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor | sudo t
 
 # 設置 Docker 的穩定版儲存庫，並自動輸入 Enter 鍵
 echo | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null <<EOF
-deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
 EOF
 
 # 更新 apt 包索引

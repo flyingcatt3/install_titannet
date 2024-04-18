@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 步驟 1：下載鏡像
-docker pull nezha123/titan-edge
+docker pull --platform linux/arm64 nezha123/titan-edge
 
 # 步驟 2：創建存儲卷
 mkdir -p ~/.titanedge1

@@ -14,7 +14,7 @@
 
 ```sudo ./setup_docker_containers.sh```
 
-Ubuntu可以直接輸入這個：```git clone https://github.com/goddeceive/install_titannet.git && cd install_titannet/ && sudo chmod +x install_and_setup.sh && sudo ./install_and_setup.sh```
+Ubuntu可以直接輸入這個：```git clone https://github.com/flyingcatt3/install_titannet.git && cd install_titannet/ && sudo chmod +x install_and_setup.sh && sudo ./install_and_setup.sh```
 
 <h2>Centos</h2>
 

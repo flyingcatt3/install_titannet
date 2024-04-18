@@ -1,5 +1,4 @@
 #!/bin/bash
-for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
 # 更新 apt 包索引
 sudo apt update
@@ -19,10 +18,13 @@ EOF
 sudo apt update
 
 # 安裝 Docker CE
-sudo apt install -y docker-ce
+sudo apt install docker-ce docker-ce-cli containerd.io -y
 
 # 啟動 Docker 服務
 sudo systemctl start docker
 
 # 驗證 Docker 是否安裝成功
 docker --version
+
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service

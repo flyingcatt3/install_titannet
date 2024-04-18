@@ -6,13 +6,15 @@ sudo apt update
 # 安裝依賴包
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 
-# 下載 Docker 的官方 GPG 密鑰並將其加入到 Docker 的 keyring
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/docker-archive-keyring.gpg >/dev/null
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-# 設置 Docker 的穩定版儲存庫，並自動輸入 Enter 鍵
-echo | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null <<EOF
-deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
-EOF
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # 更新 apt 包索引
 sudo apt update
